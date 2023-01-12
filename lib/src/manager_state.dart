@@ -1,4 +1,4 @@
-import 'package:ananix_junior_project/src/presentation/screens/all_user_screen.dart';
+import 'package:ananix_junior_project/src/presentation/screens/screen_selector_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _ANManagerState extends State<ANManager> {
       // theme: ThemeData(
       //   primarySwatch : kPurple,
       // ),
-      home: const AllUserScreen(),
+      home: const ScreenSelectorManager(),
 
     );
   }
