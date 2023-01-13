@@ -1,6 +1,8 @@
 import 'package:ananix_junior_project/src/presentation/screens/active_user_screen.dart';
 import 'package:flutter/material.dart';
 import '../../data/constants.dart';
+import '../widgets/button_sheet.dart';
+import 'all_users_screen.dart';
 
 class ScreenSelectorManager extends StatefulWidget {
   const ScreenSelectorManager({Key? key}) : super(key: key);
@@ -11,19 +13,24 @@ class ScreenSelectorManager extends StatefulWidget {
 
 class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
   int _selectedTab = 0;
+  String appbarTitle = "Go REST All Users List";
+
 
   void onSelectTab(int index){
     setState(() {
       if(_selectedTab == index){
         return;
       }
+      if(_selectedTab == 0 ){
+        appbarTitle = "Go REST Active User List";
+      }else{
+        appbarTitle = "Go REST All Users List";
+      }
       _selectedTab = index;
     });
   }
    static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-    ),
+     AllUserScreen(),
      ActiveUserScreen()
 
      // Text(
@@ -39,7 +46,7 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPurple,
-        title: const Text('Go REST All Users List'),
+        title:  Text(appbarTitle),
       ),
       // backgroundColor: Colors.green,
       body: _widgetOptions[_selectedTab],
@@ -63,6 +70,38 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
         ],
         onTap: onSelectTab,
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        showModalBottomSheet<void>(
+          shape: const RoundedRectangleBorder( // <-- SEE HERE
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(25.0),
+            ),
+          ),
+          context: context,
+          builder: (BuildContext context) {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+              color: Colors.white,
+              ),
+              height: 300,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 24,right: 24,top: 16),
+                child: Column(
+                  children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Creat Useer",style: TextStyle(fontSize: 20,color: Colors.black),),
+                      Icon(Icons.close)
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },),
     );
   }
 }

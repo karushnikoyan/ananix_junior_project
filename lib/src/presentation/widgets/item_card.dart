@@ -2,7 +2,11 @@ import 'package:ananix_junior_project/src/data/constants.dart';
 import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({Key? key}) : super(key: key);
+  ///ToDo add constructor model
+  // String firstName;
+  // String gMail;
+  // String male;
+  ItemCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
