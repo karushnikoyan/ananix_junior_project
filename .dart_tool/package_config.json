@@ -206,6 +206,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/karushnikoyan/Development/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "io",
       "rootUri": "file:///Users/karushnikoyan/Development/flutter/.pub-cache/hosted/pub.dartlang.org/io-1.0.3",
       "packageUri": "lib/",
@@ -306,6 +312,12 @@
       "rootUri": "file:///Users/karushnikoyan/Development/flutter/.pub-cache/hosted/pub.dartlang.org/pubspec_parse-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "reactive_forms",
+      "rootUri": "file:///Users/karushnikoyan/Development/flutter/.pub-cache/hosted/pub.dartlang.org/reactive_forms-14.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "shelf",
@@ -422,7 +434,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-13T17:03:18.411785Z",
+  "generated": "2023-01-14T20:14:03.764290Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }
