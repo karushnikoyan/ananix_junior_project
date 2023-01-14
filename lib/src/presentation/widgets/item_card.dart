@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
   ///ToDo add constructor model
-  // String firstName;
-  // String gMail;
-  // String male;
-  ItemCard({Key? key}) : super(key: key);
+  String firstName;
+  String gMail;
+  String male;
+
+  ItemCard(this.firstName, this.gMail, this.male, {super.key});
 
   @override
   Widget build(BuildContext context) {
