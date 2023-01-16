@@ -13,7 +13,7 @@ void main() async {
         create: (_) => AllUsersProvider(),
       ),
       ChangeNotifierProvider(
-        create: (_) => ButtonSheetProviderMy(),
+        create: (_) => ButtonSheetProviderAnnaniks(),
       ),
     ], child: MyApp()),
 

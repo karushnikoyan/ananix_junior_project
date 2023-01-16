@@ -7,11 +7,11 @@ part of 'people_model.dart';
 // **************************************************************************
 
 People _$PeopleFromJson(Map<String, dynamic> json) => People(
-      json['id'] as int?,
-      json['name'] as String?,
-      json['email'] as String?,
-      json['gender'] as String?,
-      json['status'] as String?,
+      id : json['id'] as int?,
+      name :json['name'] as String?,
+      email :json['email'] as String?,
+      gender : json['gender'] as String?,
+      status :json['status'] as String?,
     );
 
 Map<String, dynamic> _$PeopleToJson(People instance) => <String, dynamic>{

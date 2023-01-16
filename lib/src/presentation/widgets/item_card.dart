@@ -1,13 +1,23 @@
 import 'package:ananix_junior_project/src/data/constants.dart';
+import 'package:ananix_junior_project/src/presentation/models/people_model.dart';
+import 'package:ananix_junior_project/src/presentation/provider/all_user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ItemCard extends StatelessWidget {
   ///ToDo add constructor model
+  int id;
   String firstName;
-  String gMail;
+  String email;
   String male;
+  String status;
 
-  ItemCard(this.firstName, this.gMail, this.male, {super.key});
+  ItemCard(
+      {required this.firstName,
+      required this.email,
+      required this.male,
+      required this.status,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +35,7 @@ class ItemCard extends StatelessWidget {
             ),
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
-              offset: Offset(6.0, 6.0),
+              offset: const Offset(6.0, 6.0),
               blurRadius: 16.0,
             ),
           ],
@@ -35,23 +45,31 @@ class ItemCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0, top: 12.0),
                   child: Text(
-                    "FirstName Lastname",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    firstName,
+                    overflow: TextOverflow.visible,
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Padding(
-
-                  padding: const EdgeInsets.only(left:10.0,top:8.0),
-                  child: Text("karushnikoyan@gmail.com",style: TextStyle(color: kGray),),
+                  padding: const EdgeInsets.only(left: 10.0, top: 8.0),
+                  child: Text(
+                    "$email",
+                    overflow: TextOverflow.visible,
+                    style: const TextStyle(color: kGray),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0,top: 8.0),
-                  child: Text("Male",style: TextStyle(color: kGray),),
+                  padding: const EdgeInsets.only(left: 10.0, top: 8.0),
+                  child: Text(
+                    "$male",
+                    style: const TextStyle(color: kGray),
+                  ),
                 ),
               ],
             ),
@@ -60,10 +78,32 @@ class ItemCard extends StatelessWidget {
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CircleAvatar(radius: 8,backgroundColor: kGreen,),
+                  GestureDetector(
+                      onTap: () async {
+                        await context.read<AllUsersProvider>().updateUserData(
+                            People(
+                                id: id,
+                                name: firstName,
+                                gender: male,
+                                status: status,
+                                email: email));
+                        await context.read<AllUsersProvider>().getItems();
+                      },
+                      child: CircleAvatar(
+                          radius: 8,
+                          backgroundColor:
+                              status == "active" ? kGreen : kGray)),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: Icon(Icons.delete_forever_outlined,size: 28.0,),
+                    child: GestureDetector(
+                        onTap: () async {
+                          await context.read<AllUsersProvider>().removeUser(id);
+                          await context.read<AllUsersProvider>().getItems();
+                        },
+                        child: const Icon(
+                          Icons.delete_forever_outlined,
+                          size: 24.0,
+                        )),
                   ),
                 ],
               ),
