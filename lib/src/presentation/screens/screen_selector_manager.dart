@@ -4,7 +4,6 @@ import 'package:ananix_junior_project/src/presentation/widgets/checkbox_gender.d
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-
 import '../../data/constants.dart';
 import '../models/people_model.dart';
 import '../provider/button_sheet_provider.dart';
@@ -37,14 +36,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
     ])
   });
 
-  // final formKay = GlobalKey<FormState>();
-  // final emailValidators = MultiValidator([
-  //   RequiredValidator(errorText: 'Email is required'),
-  //   MinLengthValidator(8, errorText: 'Email must be at least 8 digits long'),
-  //   PatternValidator(r'(?=@.*?[#?!S$%^&*-@.])',
-  //       errorText: 'Email must have at least one special character')
-  // ]);
-
   void onSelectTab(int index) {
     setState(() {
       if (_selectedTab == index) {
@@ -71,7 +62,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
         backgroundColor: kPurple,
         title: Text(appbarTitle),
       ),
-      // backgroundColor: Colors.green,
       body: _widgetOptions[_selectedTab],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
@@ -97,7 +87,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
         onPressed: () async {
           People? people = await showModalBottomSheet<People?>(
               shape: const RoundedRectangleBorder(
-                // <-- SEE HERE
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(25.0),
                 ),
@@ -118,13 +107,17 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text(
+                              children: [
+                                const Text(
                                   "Creat Useer",
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.black),
                                 ),
-                                Icon(Icons.close),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.of(context).pop();
+                                  },
+                                    child: Icon(Icons.close)),
                               ],
                             ),
                             ReactiveForm(
@@ -135,7 +128,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
                                     decoration: const InputDecoration(
                                       labelText: "Enter name",
                                     ),
-
                                     formControlName: 'name',
                                     validationMessages: {
                                       ValidationMessage.required: (error) =>
@@ -145,8 +137,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
                                       ValidationMessage.minLength: (error) =>
                                           "Minimum length is 2",
                                     },
-
-                                    /// CONTROLLER ///
                                     controller: provider.nameController,
                                   ),
                                   ReactiveTextField(
@@ -160,8 +150,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
                                       ValidationMessage.email: (error) =>
                                           "Write correct email",
                                     },
-
-                                    /// CONTROLLER ///
                                     controller: provider.emileController,
                                   ),
                                 ],
@@ -181,7 +169,8 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
                                       ),
                                     ),
                                     AnnaniksCheckboxGender()
-                                  ]),
+                                  ],
+                              ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,7 +193,6 @@ class _ScreenSelectorManagerState extends State<ScreenSelectorManager> {
                                   Navigator.of(context).pop(newPeople);
                                 }
 
-                                // form.validate();
                                 setState(() {});
                               },
                               style: ElevatedButton.styleFrom(

@@ -2,7 +2,6 @@ import 'package:ananix_junior_project/src/presentation/provider/all_user_provide
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../widgets/item_card.dart';
 
 class AllUserScreen extends StatelessWidget {
@@ -21,7 +20,6 @@ class AllUserScreen extends StatelessWidget {
               id: provider.listPeoples[index].id ?? -1,
               male: "${provider.listPeoples[index].gender}",
               status: "${provider.listPeoples[index].status}");
-          // Text("${provider.listPeoples[index].name}");
         },
       );
     });

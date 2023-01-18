@@ -1,7 +1,5 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-
 import '../../data/constants.dart';
 import '../models/people_model.dart';
 
@@ -61,7 +59,6 @@ class AllUsersProvider with ChangeNotifier {
             .toList();
 
         return activeUsersList;
-        return listPeoples;
       }
     } catch (e) {
       /// Exception handle

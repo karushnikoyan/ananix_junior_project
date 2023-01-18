@@ -1,7 +1,6 @@
 import 'package:ananix_junior_project/src/presentation/provider/all_user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../widgets/item_card.dart';
 
 class ActiveUserScreen extends StatelessWidget {
@@ -28,7 +27,6 @@ class ActiveUserScreen extends StatelessWidget {
                     id: snapshot.data?[index].id ?? -1,
                     male: "${snapshot.data?[index].gender}",
                     status: "${snapshot.data?[index].status}");
-                // Text("${provider.listPeoples[index].name}");
               },
             );
           });

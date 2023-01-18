@@ -1,7 +1,6 @@
 import 'package:ananix_junior_project/src/presentation/models/people_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-
 import '../../data/constants.dart';
 
 class ButtonSheetProviderAnnaniks with ChangeNotifier {

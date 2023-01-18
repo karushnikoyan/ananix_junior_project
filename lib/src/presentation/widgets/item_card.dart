@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ItemCard extends StatelessWidget {
-  ///ToDo add constructor model
   int id;
   String firstName;
   String email;
